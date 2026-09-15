@@ -2,125 +2,352 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gruppspel: Innebandyturnering</title>
-    <link rel="stylesheet" href="newstyles.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Innebandyturnering</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Innebandyturnering - Gruppspel</h1>
+
+    <!--HEADER-->
+
+    <header class="site-header">
+        <div class="header-inner">
+
+            <div>
+                <div class="eyebrow">INNEBANDYTURNERING</div>
+                <h1>Turneringen</h1>
+                <p>Gruppspel → Slutspel → Final</p>
+            </div>
+
+            <div class="header-badge">
+                🏑
+            </div>
+
+        </div>
     </header>
 
-    <main>
-        <!-- Gruppspelstabell -->
-        <section id="group-standings">
-            <h2>Gruppspelstabell</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Lag</th>
-                        <th>Matcher</th>
-                        <th>Vinst</th>
-                        <th>Oavgjort</th>
-                        <th>Förlust</th>
-                        <th>Poäng</th>
-                        <th>Målskillnad</th>
-                    </tr>
-                </thead>
-                <tbody id="standings"></tbody>
-            </table>
+
+    <main class="container">
+
+        <!--CURRENT MATCH-->
+
+        <section
+            id="current-match-section"
+            class="current-match-section"
+        >
+
+            <div class="section-kicker">
+                JUST NU
+            </div>
+
+            <div
+                id="current-match-card"
+                class="current-match-card"
+            >
+                <!-- Renderas av JavaScript -->
+            </div>
+
         </section>
 
-        <!-- Matchschema -->
-        <section id="matchschedule">
-            <h2>Matchschema</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Match</th>
-                        <th>Lag 1</th>
-                        <th>Lag 2</th>
-                        <th>Resultat</th>
-                        <th>Registrera resultat</th>
-                    </tr>
-                </thead>
-                <tbody id="match-list"></tbody>
-            </table>
+
+        <!--STANDINGS-->
+
+        <section class="panel standings-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <div class="panel-kicker">
+                        GRUPPSPEL
+                    </div>
+
+                    <h2>Tabell</h2>
+                </div>
+
+                <div class="panel-icon">
+                    📊
+                </div>
+
+            </div>
+
+            <div class="table-wrap">
+
+                <table class="standings-table">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Lag</th>
+                            <th>MS</th>
+                            <th>V</th>
+                            <th>O</th>
+                            <th>F</th>
+                            <th>GM</th>
+                            <th>IM</th>
+                            <th>+/−</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="standings-body">
+                        <!-- Renderas av JavaScript -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
         </section>
+
+
+        <!--GROUP MATCHES – COLLAPSIBLE-->
+
+        <section class="collapse-panel">
+
+            <button
+                class="collapse-header"
+                type="button"
+                aria-expanded="false"
+                onclick="togglePanel('group-matches-panel', this)"
+            >
+
+                <span class="collapse-title-wrap">
+
+                    <span class="collapse-icon">
+                        📅
+                    </span>
+
+                    <span>
+                        Gruppmatcher
+                    </span>
+
+                </span>
+
+                <span class="collapse-arrow">
+                    ⌄
+                </span>
+
+            </button>
+
+
+            <div
+                id="group-matches-panel"
+                class="collapse-content"
+            >
+
+                <div class="collapse-inner">
+
+                    <div class="table-wrap">
+
+                        <table class="matches-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Match</th>
+                                    <th>Lag</th>
+                                    <th>Resultat</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="matches-body">
+                                <!-- Renderas av JavaScript -->
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--PLAYOFFS – COLLAPSIBLE-->
+
+        <section class="collapse-panel">
+
+            <button
+                class="collapse-header"
+                type="button"
+                aria-expanded="false"
+                onclick="togglePanel('playoff-panel', this)"
+            >
+
+                <span class="collapse-title-wrap">
+
+                    <span class="collapse-icon">
+                        🏆
+                    </span>
+
+                    <span>
+                        Slutspel
+                    </span>
+
+                </span>
+
+                <span class="collapse-arrow">
+                    ⌄
+                </span>
+
+            </button>
+
+
+            <div
+                id="playoff-panel"
+                class="collapse-content"
+            >
+
+                <div class="collapse-inner">
+
+                    <div class="playoff-grid">
+
+                        <!-- SEMIFINAL 1 -->
+
+                        <div
+                            id="semi1-card"
+                            class="playoff-card"
+                        >
+
+                            <div class="playoff-label">
+                                SEMIFINAL 1
+                            </div>
+
+                            <div
+                                id="semi1-team1"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div class="playoff-vs">
+                                VS
+                            </div>
+
+                            <div
+                                id="semi1-team2"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div
+                                id="semi1-result"
+                                class="playoff-result"
+                            >
+                                —
+                            </div>
+
+                        </div>
+
+
+                        <!-- SEMIFINAL 2 -->
+
+                        <div
+                            id="semi2-card"
+                            class="playoff-card"
+                        >
+
+                            <div class="playoff-label">
+                                SEMIFINAL 2
+                            </div>
+
+                            <div
+                                id="semi2-team1"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div class="playoff-vs">
+                                VS
+                            </div>
+
+                            <div
+                                id="semi2-team2"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div
+                                id="semi2-result"
+                                class="playoff-result"
+                            >
+                                —
+                            </div>
+
+                        </div>
+
+
+                        <!-- FINAL -->
+
+                        <div
+                            id="final-card"
+                            class="playoff-card final-card"
+                        >
+
+                            <div class="playoff-label">
+                                FINAL
+                            </div>
+
+                            <div
+                                id="final-team1"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div class="playoff-vs">
+                                VS
+                            </div>
+
+                            <div
+                                id="final-team2"
+                                class="playoff-team"
+                            >
+                                —
+                            </div>
+
+                            <div
+                                id="final-result"
+                                class="playoff-result"
+                            >
+                                —
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--FOOTER-->
+
+        <footer class="site-footer">
+            <span>🏑</span>
+            Innebandyturnering
+            <span>•</span>
+            Lycka till!
+        </footer>
+
     </main>
 
-    <!-- Sektion för att välja lag inför semifinaler -->
-    <section id="select-teams">
-        <h2>Välj lag inför semifinalerna</h2>
-        <div id="team-selection">
-            <label for="team1">Semifinal 1 - Lag 1 (Första plats i gruppen):</label>
-            <select id="team1">
-                <option value="Lag Lost and Found">Lag Lost and Found</option>
-                <option value="Lag Colorama">Lag Colorama</option>
-                <option value="Lag Discotek">Lag Discotek</option>
-                <option value="Lag Tomtenissarna">Lag Tomtenissarna</option>
-                <option value="Lag Beachboys">Lag Beachboys</option>
-            </select>
-
-            <label for="team2">Semifinal 1 - Lag 2 (Fjärde plats i gruppen):</label>
-            <select id="team2">
-                <option value="Lag Lost and Found">Lag Lost and Found</option>
-                <option value="Lag Colorama">Lag Colorama</option>
-                <option value="Lag Discotek">Lag Discotek</option>
-                <option value="Lag Tomtenissarna">Lag Tomtenissarna</option>
-                <option value="Lag Beachboys">Lag Beachboys</option>
-            </select>
-
-            <label for="team3">Semifinal 2 - Lag 1 (Andra plats i gruppen):</label>
-            <select id="team3">
-                <option value="Lag Lost and Found">Lag Lost and Found</option>
-                <option value="Lag Colorama">Lag Colorama</option>
-                <option value="Lag Discotek">Lag Discotek</option>
-                <option value="Lag Tomtenissarna">Lag Tomtenissarna</option>
-                <option value="Lag Beachboys">Lag Beachboys</option>
-            </select>
-
-            <label for="team4">Semifinal 2 - Lag 2 (Tredje plats i gruppen):</label>
-            <select id="team4">
-                <option value="Lag Lost and Found">Lag Lost and Found</option>
-                <option value="Lag Colorama">Lag Colorama</option>
-                <option value="Lag Discotek">Lag Discotek</option>
-                <option value="Lag Tomtenissarna">Lag Tomtenissarna</option>
-                <option value="Lag Beachboys">Lag Beachboys</option>
-            </select>
-
-            <button onclick="setupPlayoff()">Sätt upp semifinalerna</button>
-        </div>
-    </section>
-
-    <!-- Slutspelsträd -->
-    <section id="playoff">
-        <h2>Slutspelsträd</h2>
-        <div id="playoff-tree">
-            <div id="semifinals">
-                <h3>Semifinaler</h3>
-                <div class="match">
-                    <p id="semi1">Semifinal 1</p>
-                    <input type="text" id="score-semi1" placeholder="Ex: 4-3">
-                    <button onclick="updateSemifinal(1)">Spara resultat</button>
-                </div>
-                <div class="match">
-                    <p id="semi2">Semifinal 2</p>
-                    <input type="text" id="score-semi2" placeholder="Ex: 2-1">
-                    <button onclick="updateSemifinal(2)">Spara resultat</button>
-                </div>
-            </div>
-            <div id="final">
-                <h3>Final</h3>
-                <div class="match">
-                    <p id="final-match">Final Match</p>
-                    <input type="text" id="score-final" placeholder="Ex: 3-2">
-                    <button onclick="updateFinal()">Spara resultat</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <script src="script.js"></script>
+
 </body>
 </html>
